@@ -7,3 +7,6 @@ if pl == "+":
 elif pl == "-":
     df = a - b
     print(df)
+else:
+    mlt = a * b
+    print(mlt)
