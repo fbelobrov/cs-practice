@@ -4,3 +4,6 @@ b = int(input("Введите число >> "))
 if pl == "+":
     sm = a + b
     print(sm)
+elif pl == "-":
+    df = a - b
+    print(df)
