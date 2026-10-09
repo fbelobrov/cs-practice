@@ -1,0 +1,6 @@
+a = int(input("Введите число >> "))
+pl = input("Введите +/-/* >> ")
+b = int(input("Введите число >> "))
+if pl == "+":
+    sm = a + b
+    print(sm)
