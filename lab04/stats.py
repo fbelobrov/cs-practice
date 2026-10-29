@@ -22,8 +22,17 @@ def parse_record(line: str) -> dict:
 
 
 def read_valid(lines: list[str]) -> list[dict]:
-    """Преобразовать строки журнала в записи."""
-    return [parse_record(line) for line in lines]
+    """Вернуть корректные записи, пропустив пустые и ошибочные строки."""
+    records = []
+    for line in lines:
+        if not line.strip():
+            continue
+        try:
+            record = parse_record(line)
+        except ValueError:
+            continue
+        records.append(record)
+    return records
 
 
 def average_by_city(records: list[dict]) -> dict:
