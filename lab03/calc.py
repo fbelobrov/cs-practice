@@ -11,8 +11,6 @@ def calculate(a: float, b: float, operation: str = "+") -> float:
         return a - b
     if operation == "*":
         return a * b
-    if operation == "/":
-        return a / b
     raise ValueError(f"Неизвестная операция: {operation}")
 
 
