@@ -2,9 +2,23 @@
 
 
 def parse_record(line: str) -> dict:
-    """Разобрать строку в запись о температуре."""
-    city, temperature, date = line.split(";")
-    return {"city": city, "temperature": float(temperature), "date": date}
+    """Разобрать запись; при неверных данных возбудить ValueError."""
+    fields = line.split(";")
+    if len(fields) != 3:
+        raise ValueError("В строке должно быть ровно три поля через ';'")
+
+    city, temperature_text, date = [field.strip() for field in fields]
+    if not city:
+        raise ValueError("Название города не должно быть пустым")
+    if not date:
+        raise ValueError("Дата не должна быть пустой")
+
+    try:
+        temperature = float(temperature_text.replace(",", "."))
+    except ValueError as error:
+        raise ValueError(f"Температура должна быть числом: {temperature_text!r}") from error
+
+    return {"city": city, "temperature": temperature, "date": date}
 
 
 def read_valid(lines: list[str]) -> list[dict]:
