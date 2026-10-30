@@ -1,0 +1,3 @@
+# Keep the supplied logs byte-for-byte, including line endings.
+*.log -text
+report.txt text eol=lf
