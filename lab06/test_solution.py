@@ -20,7 +20,11 @@ class SolutionTests(unittest.TestCase):
 
     def test_last_dot_and_hidden_file(self):
         self.assertEqual(count_by_extension(["archive.tar.gz", ".gitignore", "dir/.env", "file."]),
-                         {"gz": 1, "gitignore": 1, "env": 1, "": 1})
+                         {"gz": 1, "": 3})
+
+    def test_hidden_file_with_real_extension(self):
+        self.assertEqual(count_by_extension([".config.JSON", "dir/.settings.toml", "...hidden"]),
+                         {"json": 1, "toml": 1, "": 1})
 
     def test_dots_in_directories(self):
         self.assertEqual(count_by_extension(["folder.name/Makefile", "v1.2/docs/report.PDF"]),

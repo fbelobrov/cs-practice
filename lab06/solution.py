@@ -1,12 +1,14 @@
 """Разбор строк путей и размеров без обращения к файловой системе."""
 
+from posixpath import splitext
+
 
 def count_by_extension(paths: list[str]) -> dict[str, int]:
     """Посчитать расширения имён файлов без точки и в нижнем регистре."""
     counts = {}
     for path in paths:
         filename = path.rsplit("/", 1)[-1]
-        extension = filename.rsplit(".", 1)[-1].lower() if "." in filename else ""
+        extension = splitext(filename)[1][1:].lower()
         counts[extension] = counts.get(extension, 0) + 1
     return counts
 
